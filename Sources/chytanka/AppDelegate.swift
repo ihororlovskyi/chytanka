@@ -16,11 +16,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     item.menu = makeMenu()
     statusItem = item
 
-    hotKey = HotKey(keyCode: UInt32(kVK_Escape), modifiers: UInt32(optionKey)) { [weak self] in
+    hotKey = HotKey(keyCode: UInt32(kVK_Escape), modifiers: UInt32(controlKey)) { [weak self] in
       self?.toggleReading()
     }
     if hotKey == nil {
-      NSLog("chytanka: failed to register the Option-Escape hot key")
+      NSLog("chytanka: failed to register the Control-Escape hot key")
     }
 
     _ = SelectionReader.isTrusted(prompt: true)
@@ -30,7 +30,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     let menu = NSMenu()
 
     let read = NSMenuItem(title: "Прочитати виділене", action: #selector(readSelection), keyEquivalent: "\u{1b}")
-    read.keyEquivalentModifierMask = .option
+    read.keyEquivalentModifierMask = .control
     read.target = self
     menu.addItem(read)
 
