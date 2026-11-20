@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.2 - 2026-11-21
+
+### Changed
+
+- Hot key is now Control-Escape, so it no longer clashes with the macOS
+  built-in Speak Selection shortcut Option-Escape.
+
 ## 0.0.1 - 2026-11-21
 
 ### Added

@@ -2,7 +2,7 @@
 
 Tiny macOS menu bar app that reads the selected text aloud in Ukrainian.
 
-Select text in any app and press **Option-Escape**. Press it again to stop.
+Select text in any app and press **Control-Escape**. Press it again to stop.
 Latin-script words can go to an English system voice (menu toggle); by default
 the Ukrainian voice reads everything.
 
