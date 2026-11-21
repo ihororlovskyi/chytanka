@@ -1,0 +1,17 @@
+/* Ukrainian menu and alert texts; English is the source language in code. */
+"Read Selection" = "Прочитати виділене";
+"Stop" = "Зупинити";
+"Voice" = "Голос";
+"Launch at Login" = "Запускати під час входу";
+"Launch at Login - Approval Required" = "Запускати під час входу - потрібне схвалення";
+"About Chytanka" = "Про Читанку";
+"Quit Chytanka" = "Вийти з Читанки";
+"Chytanka needs Accessibility permission" = "Chytanka потребує дозволу Accessibility";
+"Without it the app cannot see the selected text. Turn on Chytanka in System Settings → Privacy & Security → Accessibility. If it is already on, remove it with the “−” button and add the app again." = "Без нього застосунок не бачить виділений текст. Увімкніть Chytanka в System Settings → Privacy & Security → Accessibility. Якщо запис уже увімкнений, видаліть його кнопкою «−» і додайте застосунок знову.";
+"Open Settings" = "Відкрити налаштування";
+"Cancel" = "Скасувати";
+"No Ukrainian voice installed" = "Український голос не встановлено";
+"Could not change the login item" = "Не вдалося змінити запуск під час входу";
+"Registration usually fails when the app runs from outside /Applications. Move Chytanka.app to /Applications and try again." = "Зазвичай це стається, коли застосунок запущено не з /Applications. Перемістіть Chytanka.app у /Applications і спробуйте знову.";
+"Pronunciations: CMU Pronouncing Dictionary" = "Вимова: CMU Pronouncing Dictionary";
+"Download and Install %@" = "Завантажити й встановити %@";

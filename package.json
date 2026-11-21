@@ -1,0 +1,28 @@
+{
+  "name": "chytanka",
+  "version": "0.0.4",
+  "description": "macOS menu bar app that reads the selected text aloud in Ukrainian",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihororlovskyi/chytanka.git"
+  },
+  "homepage": "https://github.com/ihororlovskyi/chytanka",
+  "bin": {
+    "chytanka": "bin/chytanka.js"
+  },
+  "files": [
+    "bin",
+    "install.sh"
+  ],
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module"
+}
