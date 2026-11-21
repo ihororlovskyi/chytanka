@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.0.4 - 2026-11-21
+
+### Added
+
+- English words are transliterated into Ukrainian letters by default, using the
+  CMU Pronouncing Dictionary, so the Ukrainian voice reads them close to English.
+- Voice menu: pick any installed Ukrainian voice, such as Lesya or Lesya
+  (Enhanced). The best installed one is the default.
+- Launch at Login and About Chytanka menu items.
+- Update check against GitHub releases, with a Download and Install menu item.
+- `install.sh update` and `install.sh uninstall`.
+- npm package: `npx chytanka install`, `update`, `uninstall`.
+- MIT license.
+- English menu and alerts; Ukrainian when it is the preferred system language.
+
+### Removed
+
+- The English voice option for Latin-script words.
+
 ## 0.0.3 - 2026-11-21
 
 ### Added
