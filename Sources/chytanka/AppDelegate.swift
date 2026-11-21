@@ -1,5 +1,8 @@
 import AppKit
 import Carbon.HIToolbox
+import OSLog
+
+let log = Logger(subsystem: "com.ihororlovskyi.chytanka", category: "app")
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
@@ -23,7 +26,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
       NSLog("chytanka: failed to register the Control-Escape hot key")
     }
 
-    _ = SelectionReader.isTrusted(prompt: true)
+    let trusted = SelectionReader.isTrusted(prompt: true)
+    log.notice("launched, accessibility trusted: \(trusted)")
   }
 
   private func makeMenu() -> NSMenu {
@@ -66,12 +70,32 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   @objc private func readSelection() {
+    guard SelectionReader.isTrusted(prompt: false) else {
+      log.error("read requested without accessibility permission")
+      showAccessibilityAlert()
+      return
+    }
     Task { @MainActor in
       guard let text = await SelectionReader.selectedText() else {
+        log.notice("no selected text found")
         NSSound.beep()
         return
       }
+      log.notice("speaking \(text.count) characters")
       speaker.speak(text, englishWithEnglishVoice: UserDefaults.standard.bool(forKey: Self.englishVoiceKey))
+    }
+  }
+
+  private func showAccessibilityAlert() {
+    NSApp.activate(ignoringOtherApps: true)
+    let alert = NSAlert()
+    alert.messageText = "Chytanka потребує дозволу Accessibility"
+    alert.informativeText = "Без нього застосунок не бачить виділений текст. Увімкніть Chytanka в System Settings → Privacy & Security → Accessibility. Якщо запис уже увімкнений, видаліть його кнопкою «−» і додайте застосунок знову."
+    alert.addButton(withTitle: "Відкрити налаштування")
+    alert.addButton(withTitle: "Скасувати")
+    if alert.runModal() == .alertFirstButtonReturn,
+       let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility") {
+      NSWorkspace.shared.open(url)
     }
   }
 

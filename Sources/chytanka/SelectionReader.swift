@@ -12,8 +12,13 @@ enum SelectionReader {
   }
 
   static func selectedText() async -> String? {
-    if let text = viaAccessibility() { return text }
-    return await viaCopy()
+    if let text = viaAccessibility() {
+      log.notice("selection via accessibility")
+      return text
+    }
+    let text = await viaCopy()
+    log.notice("selection via copy: \(text == nil ? "none" : "found", privacy: .public)")
+    return text
   }
 
   private static func viaAccessibility() -> String? {
