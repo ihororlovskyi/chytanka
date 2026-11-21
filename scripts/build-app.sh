@@ -14,4 +14,8 @@ cp "$BIN_DIR/chytanka" "$APP/Contents/MacOS/chytanka"
 cp "$PROJECT_ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
 codesign --force --sign - "$APP"
 
+# An ad-hoc signature changes with every build, so an old Accessibility grant
+# stays visible in System Settings but no longer applies. Reset it to get a fresh prompt.
+tccutil reset Accessibility com.ihororlovskyi.chytanka >/dev/null 2>&1 || true
+
 echo "$APP"

@@ -6,6 +6,24 @@ Select text in any app and press **Control-Escape**. Press it again to stop.
 Latin-script words can go to an English system voice (menu toggle); by default
 the Ukrainian voice reads everything.
 
+## Install
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ihororlovskyi/chytanka/main/install.sh | sh
+```
+
+Or with Homebrew:
+
+```sh
+brew tap ihororlovskyi/tap
+brew trust --cask ihororlovskyi/tap/chytanka
+brew install --cask chytanka
+```
+
+The app is ad-hoc signed. After a Homebrew install, open it once from
+`/Applications` with right-click → Open. Then allow it in System Settings →
+Privacy & Security → Accessibility.
+
 ## Requirements
 
 - macOS 14+, Apple Silicon.
@@ -21,9 +39,11 @@ swift test
 open build/Chytanka.app
 ```
 
-The app is ad-hoc signed, so macOS asks for Accessibility again after each
-rebuild: remove the old Chytanka entry in System Settings → Privacy & Security →
-Accessibility and add the new build.
+The app is ad-hoc signed, so an Accessibility grant does not survive a rebuild.
+`build-app.sh` resets it, and the next launch asks again. When reading does
+nothing, the app shows an alert that opens the Accessibility settings.
+
+Logs: `log stream --predicate 'subsystem == "com.ihororlovskyi.chytanka"'`.
 
 ## Versioning
 
